@@ -1,30 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Raadspelletje
 {
     public class Raadspel
     {
-        private static Random random = new Random();
+        private static Random rnd = new Random();
         public int AantalBeurten { get; set; }
-        public Boolean win = false;
-        public Boolean lose = false;
+        public Boolean gewonnen = false;
+        public Boolean einde = false;
         public int teRaden { get; private set; }
         public void Worp()
         {
-            teRaden = random.Next(1, 11);
+            teRaden = rnd.Next(1, 11);
         }
         public void Gok(int gok)
         {
             if (gok == teRaden)
-                win = true;
-            else win = false;
+                gewonnen = true;
+            else gewonnen = false;
         }
         public void Einde()
         {
             AantalBeurten += 1;
             if (AantalBeurten == 3)
-                lose = true;
-            else lose = false;
+                einde = true;
+            else einde = false;
         }
     }
 }
